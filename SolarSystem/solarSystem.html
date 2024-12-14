@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Solar System</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            overflow: hidden;
+        }
+        canvas {
+            border: 2px solid #fff;
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="700" height="700"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Solar system configuration
+        const solarSystem = {
+            centerX: canvas.width / 2,
+            centerY: canvas.height / 2,
+            sunRadius: 20,
+            planets: [
+                { name: 'Mercury', color: 'grey', orbitalRadius: 50, size: 8, speed: 0.04 },
+                { name: 'Venus', color: 'yellow', orbitalRadius: 90, size: 12, speed: 0.03 },
+                { name: 'Earth', color: 'blue', orbitalRadius: 130, size: 14, speed: 0.02 },
+                { name: 'Mars', color: 'red', orbitalRadius: 170, size: 10, speed: 0.015 },
+                { name: 'Jupiter', color: 'orange', orbitalRadius: 210, size: 30, speed: 0.01 },
+                { name: 'Saturn', color: 'purple', orbitalRadius: 250, size: 26, speed: 0.008 },
+                { name: 'Uranus', color: 'lightblue', orbitalRadius: 280, size: 22, speed: 0.006 },
+                { name: 'Neptune', color: 'green', orbitalRadius: 310, size: 20, speed: 0.005 }
+            ]
+        };
+
+        // Track each planet's angle for rotation
+        solarSystem.planets.forEach(planet => {
+            planet.angle = Math.random() * 2 * Math.PI; // Start at a random angle
+        });
+
+        function drawSolarSystem() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the sun
+            ctx.beginPath();
+            ctx.arc(solarSystem.centerX, solarSystem.centerY, solarSystem.sunRadius, 0, 2 * Math.PI);
+            ctx.fillStyle = 'yellow';
+            ctx.fill();
+
+            // Draw each planet and animate their orbit
+            solarSystem.planets.forEach(planet => {
+                // Update planet position based on speed
+                planet.angle += planet.speed;
+
+                // Calculate planet's position in its orbit
+                const x = solarSystem.centerX + planet.orbitalRadius * Math.cos(planet.angle);
+                const y = solarSystem.centerY + planet.orbitalRadius * Math.sin(planet.angle);
+
+                // Draw orbit path
+                ctx.beginPath();
+                ctx.arc(solarSystem.centerX, solarSystem.centerY, planet.orbitalRadius, 0, 2 * Math.PI);
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+                ctx.stroke();
+
+                // Draw planet
+                ctx.beginPath();
+                ctx.arc(x, y, planet.size, 0, 2 * Math.PI);
+                ctx.fillStyle = planet.color;
+                ctx.fill();
+
+                // Label planet
+                ctx.fillStyle = '#fff';
+                ctx.font = '12px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(planet.name, x, y - planet.size - 5);
+            });
+
+            requestAnimationFrame(drawSolarSystem);
+        }
+        drawSolarSystem();
+    </script>
+</body>
+</html>
