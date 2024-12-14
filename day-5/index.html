@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Image and HTML Tags</title>
+</head>
+<body>
+  
+  <h1>Responsive Image using the <code>picture</code> Element code..</h1>
+  
+  <!-- Picture element with multiple sources for responsive design -->
+  <picture>
+    <source
+      srcset="
+        https://th.bing.com/th/id/OIP.BJCe-jcOGmwdJqWrPAYoegHaE7?w=378&h=360&c=7&r=0&o=5&dpr=1.5&pid=1.7 2x,
+        https://th.bing.com/th/id/OIP.BJCe-jcOGmwdJqWrPAYoegHaE7?w=189&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7 1x
+      "
+      media="(min-width: 1000px)"
+    />
+    <img
+      src="https://th.bing.com/th/id/OIP.BJCe-jcOGmwdJqWrPAYoegHaE7?w=189&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+      alt="Sample picture illustrating responsive design with picture element"
+    />
+  </picture>
+
+  <!-- Details element providing additional information with collapsible content -->
+  <details>
+    <summary>Learn more about the <code>picture</code> element</summary>
+    <p>
+      The <code>picture</code> element is a semantic HTML5 element that enables responsive images by 
+      allowing the use of multiple <code>source</code> elements, each specifying different 
+      resolutions or formats for various devices.
+    </p>
+    <p>
+      With <code>picture</code>, authors can deliver images optimized for different screen sizes or 
+      pixel densities, improving load times and user experience.
+    </p>
+  </details>
+
+  <!-- Use of del, ins, samp, and time tags -->
+  <p>
+    <del>
+      The <code>picture</code> element was introduced in HTML5, enabling responsive images through 
+      multiple <code>source</code> elements.
+    </del>
+  </p>
+  <p>
+    <ins>
+      The <code>picture</code> element is supported by modern browsers, allowing authors to deliver 
+      images optimized for a variety of devices.
+    </ins>
+  </p>
+  
+  <p>
+    <samp>
+      Example output: <code>Using <picture> to serve optimized images for different devices</code>.
+    </samp>
+  </p>
+
+  <!-- Example of time tag with a specific date format -->
+  <p>
+    The <code>picture</code> element was added to HTML on 
+    <time datetime="2000-01-01">January 1, 2000</time>.
+  </p>
+
+</body>
+</html>
