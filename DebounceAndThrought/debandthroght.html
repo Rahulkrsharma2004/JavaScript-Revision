@@ -93,12 +93,12 @@
       throttleResults.textContent = query ? `Throttling search for: ${query}` : '';
     }
 
-    const debouncedHandleSearch = debounce(handleDebounceSearch, 300);
+    const debouncedHandleSearch = debounce(handleDebounceSearch, 3000);
     const throttledHandleSearch = throttle(handleThrottleSearch, 300);
 
     debounceSearchBox.addEventListener('input', debouncedHandleSearch);
     throttleSearchBox.addEventListener('input', throttledHandleSearch);
-    
+
   </script>
 </body>
 </html>
