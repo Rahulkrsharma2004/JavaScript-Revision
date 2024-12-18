@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debounce and Throttle Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    #results, #throttleResults {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Debounce and Throttle Example</h1>
+    <input type="text" id="debounceSearchBox" placeholder="Debounce: Type to search...">
+    <div id="results"></div>
+    <br>
+    <input type="text" id="throttleSearchBox" placeholder="Throttle: Type to search...">
+    <div id="throttleResults"></div>
+  </div>
+  <script>
+
+    // debounceing function for search results
+
+    function debounce(func, delay) {
+      let timeoutId;
+      return function(...args) {
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+        timeoutId = setTimeout(() => {
+          func.apply(this, args);
+        }, delay);
+      };
+    }
+
+
+    // throttling for search results
+
+    function throttle(func, limit) {
+      let inThrottle;
+      return function(...args) {
+        if (!inThrottle) {
+          func.apply(this, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      };
+    }
+
+    const debounceSearchBox = document.getElementById('debounceSearchBox');
+    const throttleSearchBox = document.getElementById('throttleSearchBox');
+    const results = document.getElementById('results');
+    const throttleResults = document.getElementById('throttleResults');
+
+    function handleDebounceSearch(event) {
+      const query = event.target.value;
+      results.textContent = query ? `Debouncing search for: ${query}` : '';
+    }
+
+    function handleThrottleSearch(event) {
+      const query = event.target.value;
+      throttleResults.textContent = query ? `Throttling search for: ${query}` : '';
+    }
+
+    const debouncedHandleSearch = debounce(handleDebounceSearch, 300);
+    const throttledHandleSearch = throttle(handleThrottleSearch, 300);
+
+    debounceSearchBox.addEventListener('input', debouncedHandleSearch);
+    throttleSearchBox.addEventListener('input', throttledHandleSearch);
+    
+  </script>
+</body>
+</html>
