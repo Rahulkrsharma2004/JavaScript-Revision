@@ -1,22 +1,39 @@
-let counter = 0;
-const arr = [1, 2, 3];
+// let counter = 0;
+// const arr = [1, 2, 3];
+
+// function increment() {
+//   counter++;
+//   console.log("Counter:", counter);
+// }
+
+// const [a, b, c] = arr;
+
+// setTimeout(() => {
+//   console.log("a:", a);
+//   increment();
+//   setTimeout(() => {
+//     console.log("b:", b);
+//     increment();
+//     setTimeout(() => {
+//       console.log("c:", c);
+//       increment();
+//     }, 1000);
+//   }, 2000);
+// }, 3000);
+
+let count = 0;
+const data = {
+  a: [1, 2, 3],
+  b: [4, 5, 6],
+  c: [7, 8, 9],
+};
 
 function increment() {
-  counter++;
-  console.log("Counter:", counter);
+  const [arr1, arr2, arr3] = Object.values(data);
+  setInterval(() => {
+    console.log(arr1[count], arr2[count], arr3[count]);
+    count++;
+  }, 1000);
 }
 
-const [a, b, c] = arr;
-
-setTimeout(() => {
-  console.log("a:", a);
-  increment();
-  setTimeout(() => {
-    console.log("b:", b);
-    increment();
-    setTimeout(() => {
-      console.log("c:", c);
-      increment();
-    }, 1000);
-  }, 2000);
-}, 3000);
+increment();
