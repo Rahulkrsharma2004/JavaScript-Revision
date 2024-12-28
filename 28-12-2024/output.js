@@ -25,10 +25,10 @@ console.log([] + []);
 // console.log(b);
 
 
-let a = {};
-let b = {key: 'b'};
-let c = {key: 'c'};
-a[b] = 123;
-a[c] = 456;
-console.log(a[b]);
+// let a = {};
+// let b = {key: 'b'};
+// let c = {key: 'c'};
+// a[b] = 123;
+// a[c] = 456;
+// console.log(a[b]);
 
