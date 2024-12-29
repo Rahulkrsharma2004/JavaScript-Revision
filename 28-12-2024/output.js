@@ -32,3 +32,14 @@ console.log([] + []);
 // a[c] = 456;
 // console.log(a[b]);
 
+
+// function testing () {
+//     console.log("something")
+// }
+
+// testing()
+
+
+const FetchData = () =>{
+    console.log(response.data);
+}
