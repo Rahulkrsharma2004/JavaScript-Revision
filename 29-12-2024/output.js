@@ -1,12 +1,12 @@
 function outerFunction() {
-    let outerVariable = 'I am from outer function';
+  let outerVariable = "I am from outer function";
 
-    function innerFunction() {
-        console.log(outerVariable);
-    }
+  function innerFunction() {
+    console.log(outerVariable);
+  }
 
-    return innerFunction;
+  return innerFunction;
 }
 
 const closureFunc = outerFunction();
-closureFunc(); // Outputs: 'I am from outer function'
+closureFunc();
