@@ -28,7 +28,7 @@
 // console.log(result);
 
 
-// const arr = [1, 2, 3, 4];
-// const result = arr.sort((a, b) => b - a).slice(1).reverse();
-// console.log(result);
+const arr = [1, 2, 3, 4];
+const result = arr.sort((a, b) => b - a).slice(1).reverse();
+console.log(result);
 
