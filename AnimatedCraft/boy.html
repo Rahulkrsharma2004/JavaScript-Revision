@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boy Driving a Bike Animation</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #87ceeb, #fff);
+    }
+
+    .road {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      background: #333;
+      border-top: 5px solid #666;
+    }
+
+    .bike {
+      position: absolute;
+      bottom: 120px;
+      left: 0;
+      width: 200px;
+      height: 150px;
+      background: url('https://via.placeholder.com/200x150') no-repeat center center;
+      background-size: contain;
+      animation: drive 4s linear infinite;
+    }
+
+    @keyframes drive {
+      0% {
+        transform: translateX(-200px);
+      }
+      100% {
+        transform: translateX(100vw);
+      }
+    }
+
+    .wheel {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border: 5px solid black;
+      border-radius: 50%;
+      background: #444;
+      top: 120px;
+    }
+
+    .wheel.front {
+      left: 150px;
+    }
+
+    .wheel.rear {
+      left: 40px;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .wheel {
+      animation: spin 1s linear infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="road"></div>
+  <div class="bike">
+    <div class="wheel rear"></div>
+    <div class="wheel front"></div>
+  </div>
+  <script>
+    // If you want to add interactivity, such as stopping the bike on click
+    const bike = document.querySelector('.bike');
+    bike.addEventListener('click', () => {
+      const isPaused = bike.style.animationPlayState === 'paused';
+      bike.style.animationPlayState = isPaused ? 'running' : 'paused';
+      document.querySelectorAll('.wheel').forEach(wheel => {
+        wheel.style.animationPlayState = isPaused ? 'running' : 'paused';
+      });
+    });
+  </script>
+</body>
+</html>
