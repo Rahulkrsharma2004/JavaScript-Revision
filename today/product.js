@@ -91,7 +91,10 @@ const groupAndSortProducts = () => {
   };
   groupAndSortProducts();
   
-
+const ass = () => {
+  const result = products.filter(product => product.rating >= 4.5);
+  console.log(result);
+}
 
 let object = {};
 
