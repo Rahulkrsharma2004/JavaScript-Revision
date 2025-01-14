@@ -1,15 +1,15 @@
 // script.js
 const kite = document.getElementById("kite");
-const string = document.getElementById("string");
 
-let kiteHeight = 50; // Initial height
+let colors = [
+  "linear-gradient(45deg, #FF0000, #FFFF00)",
+  "linear-gradient(45deg, #00FF00, #0000FF)",
+  "linear-gradient(45deg, #FF00FF, #00FFFF)",
+];
+let currentColorIndex = 0;
 
-// Function to pull kite higher
-function pullKiteHigher() {
-  kiteHeight -= 10; // Reduce height
-  kite.style.top = `${kiteHeight}%`;
-  string.style.height = `${300 + kiteHeight}px`;
-}
-
-// Event Listener for clicking on the boy
-document.querySelector(".boy").addEventListener("click", pullKiteHigher);
+// Change kite color on click
+kite.addEventListener("click", () => {
+  currentColorIndex = (currentColorIndex + 1) % colors.length;
+  kite.style.background = colors[currentColorIndex];
+});
