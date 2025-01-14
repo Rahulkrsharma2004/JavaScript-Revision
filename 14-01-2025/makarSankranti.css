@@ -1,0 +1,124 @@
+/* styles.css */
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #87CEEB; /* Sky blue */
+    font-family: Arial, sans-serif;
+  }
+  
+  .sky {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, #87CEEB, #FFD700); /* Gradient sky */
+  }
+  
+  /* Kite */
+  .kite {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #FF0000, #FFFF00);
+    transform: translate(-50%, -50%) rotate(45deg);
+    border: 2px solid #000;
+    animation: flyKite 6s ease-in-out infinite;
+  }
+  
+  .string {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    width: 2px;
+    height: 300px;
+    background: #000;
+    transform-origin: top;
+    transform: rotate(0deg);
+    animation: swayString 2s infinite alternate ease-in-out;
+  }
+  
+  /* Boy */
+  .boy {
+    position: absolute;
+    bottom: 10%;
+    left: 20%;
+    width: 50px;
+    height: 150px;
+    animation: boyMove 2s infinite;
+  }
+  
+  .body {
+    position: relative;
+    width: 30px;
+    height: 60px;
+    background: #ffcc99; /* Skin tone */
+    margin: auto;
+    border-radius: 10px;
+  }
+  
+  .arm {
+    position: absolute;
+    width: 10px;
+    height: 40px;
+    background: #ffcc99;
+    top: 10px;
+    left: 10px;
+    animation: armMove 2s infinite;
+  }
+  
+  .leg {
+    position: absolute;
+    width: 10px;
+    height: 50px;
+    background: #000;
+    bottom: 0;
+    left: 20px;
+  }
+  
+  /* Animations */
+  @keyframes flyKite {
+    0% {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    25% {
+      transform: translate(-60%, -55%) rotate(50deg);
+    }
+    50% {
+      transform: translate(-50%, -60%) rotate(45deg);
+    }
+    75% {
+      transform: translate(-40%, -55%) rotate(40deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+  
+  @keyframes swayString {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(5deg);
+    }
+  }
+  
+  @keyframes boyMove {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(5px);
+    }
+  }
+  
+  @keyframes armMove {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+  }
+  
