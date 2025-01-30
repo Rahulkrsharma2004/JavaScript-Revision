@@ -1,0 +1,13 @@
+h1{
+    font-size: 100px;
+    text-align: center;
+}
+
+.burn{
+    background-image: url(https://th.bing.com/th/id/OIP.LzDFYZORC1bFyQi8ae4HVgHaEK?rs=1&pid=ImgDetMain);
+    background-size: cover;
+    background-position: center;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
